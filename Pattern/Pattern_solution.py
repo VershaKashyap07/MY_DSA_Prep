@@ -617,3 +617,4 @@ for i in range(2*N-1):
         
         print(N- min(min(top,bottom), min(left,right)),end =" ")
     print()
+    
