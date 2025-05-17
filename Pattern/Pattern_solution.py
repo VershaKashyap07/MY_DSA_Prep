@@ -463,19 +463,123 @@ Result:
  ABCDEDCBA 
 ABCDEFEDCBA
 '''
-for i in range(1,N+1): 
-    print(" " * (N-i), end = "")
+for i in range(1,N+1):
+    ## print space
+    print(" " * (N-i), end ="")
+    ##print char
+    num = 'A'
+    stars = 2*i-1
+    breakpoint = (2*i-1)//2
     
-    for j in range(i):
-        print(chr(65+j), end = "")
+    for j in range(1, stars+1):
+        print(num, end ="")
         
-    for k in range(i-2,-1,-1):
-        print(chr(65+k), end = "")
-        
-    print(" " * (N-i), end = "")
+        if j<= breakpoint:
+            num = chr(ord(num)+1)
+            
+        else:
+            num = chr(ord(num)-1)
+            
+    ## print space
+    print("  " * (N-i), end ="")
+    print() 
+
+''' 18: Alpha-Triangle Pattern
+Input Format: N = 6
+Result:   
+F
+E F
+D E F
+C D E F
+B C D E F
+A B C D E F
+'''
+
+for i in range(N):
+    num = ord('F')
+    for j in range(num-i, num+1,1):
+        print(chr(j),end =" ")
     print()
 
-''' 18: Hollow Rectangle Pattern
+'''19: Symmetric-Void Pattern
+Input Format: N = 6
+Result:   
+************
+*****  *****
+****    ****
+***      ***
+**        **
+*          *
+*          *
+**        **
+***      ***
+****    ****
+*****  *****
+************
+'''
+#first half    
+space = 0
+for i in range(N):
+    stars = N-i
+    #print stars
+    for j in range(stars):
+        print("*",end ="")
+      
+    print(" " * space,end ="") 
+        #print stars
+    for k in range(stars):
+        print("*", end ="")
+        
+    print()  
+    space+=2
+
+#second half    
+space = 2*N-2  
+for i in range(N):
+        #print stars
+    for k in range(i+1):
+        print("*",end ="")
+    #print space  
+    print(" " * space,end ="") 
+        #print stars
+    for l in range(i+1):
+        print("*", end ="")
+        
+    print()  
+    space-=2
+
+'''20: Symmetric-Butterfly Pattern
+Input Format: N = 3
+Result: 
+*    *
+**  **
+******
+**  **
+*    *
+'''
+
+space = 2*N-2
+rows = 2*N-1
+for i in range(1, rows+1):
+    stars =i
+    if i>N:
+        stars =2*N-i
+    ## Print Stars
+    for j in range(1, stars+1):
+        print("*", end = "")
+    ##print space 
+    for k in range(1, space+1):
+        print(" ", end = "")
+    ## print stars
+    for l in range(1, stars+1):
+        print("*", end = "")
+    print() ##next line
+    if i<N:
+        space-=2
+    else:
+        space+=2
+
+''' 21: Hollow Rectangle Pattern
 Input Format: N = 6
 Result:   
 ******
@@ -492,4 +596,24 @@ for i in range(N):
             print("*", end="")
         else:
             print(" ", end="")
+    print()
+
+'''
+22: The Number Pattern
+Input Format: N = 3
+Result: 
+3 3 3 3 3 
+3 2 2 2 3 
+3 2 1 2 3 
+3 2 2 2 3 
+3 3 3 3 3
+'''
+for i in range(2*N-1):
+    for j in range(2*N-1):
+        top = i
+        left = j
+        right = (2*N-2)-j
+        bottom = (2*N-2)-i
+        
+        print(N- min(min(top,bottom), min(left,right)),end =" ")
     print()
